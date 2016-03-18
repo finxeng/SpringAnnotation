@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <!-- 注入com.SpringAnnotation包下除HelloController之外的bean
+    	   如加入use-default-filters="false"属性，com.SpringAnnotation包下任何bean都不会被注入
+    <context:component-scan base-package="com.SpringAnnotation">
+    	<context:exclude-filter type="assignable" expression="com.SpringAnnotation.controller.HelloController"/>
+    </context:component-scan> 
+    -->
+    <!-- 只注入com.SpringAnnotation包下的HelloController
+    	 如没有use-default-filters="false"属性，include-filter不生效
+    <context:component-scan base-package="com.SpringAnnotation" use-default-filters="false">
+    	<context:include-filter type="assignable" expression="com.SpringAnnotation.controller.HelloController"/>
+    </context:component-scan> 
+    -->
+    <!-- 只注入com.SpringAnnotation.service包下以Service结尾的类
+    <context:component-scan base-package="com.SpringAnnotation" use-default-filters="false">
+    	<context:include-filter type="regex" expression="com.SpringAnnotation.service.*Service"/>
+    </context:component-scan>
+    -->
+    <!-- 只注入com.SpringAnnotation.service包下所有的类
+    <context:component-scan base-package="com.SpringAnnotation" use-default-filters="false">
+    	<context:include-filter type="regex" expression="com.SpringAnnotation.service.*"/>
+    </context:component-scan>
+    -->
+    <!-- 只注入com.SpringAnnotation.controller包下所有的类
+    <context:component-scan base-package="com.SpringAnnotation">
+    	<context:exclude-filter type="regex" expression="com.SpringAnnotation.service.*"/>
+    </context:component-scan>
+    -->
+    <!-- <bean id="helloController" class="com.SpringAnnotation.controller.HelloController"></bean> -->
+    <context:component-scan base-package="com.SpringAnnotation"></context:component-scan>
+</beans>
